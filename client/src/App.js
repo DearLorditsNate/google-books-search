@@ -1,9 +1,20 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Saved from "./pages/Saved";
 
 function App() {
   return (
-    <h1>Hello World!</h1>
+    <Router>
+      <div>
+        {/* <Nav /> */}
+        <Switch>
+          {/* <Route exact path="/" component={Boo} /> */}
+          <Route exact path="/saved" component={Saved} />
+          {/* <Route exact path="/books/:id" component={Detail} /> */}
+          {/* <Route component={Saved} /> */}
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

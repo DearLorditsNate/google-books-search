@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
   title: {
-    type: [String],
+    type: String,
     required: true
   },
   authors: {
-    type: String,
+    type: [String],
     required: true
   },
   description: {

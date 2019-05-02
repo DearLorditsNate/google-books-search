@@ -1,0 +1,14 @@
+.card .card-header .save-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+.card .card-header {
+  font-size: 30px;
+}
+
+.title {
+  display: inline-block;
+  width: 70%;
+}

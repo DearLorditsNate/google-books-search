@@ -9,14 +9,12 @@ class Saved extends Component {
   };
 
   componentDidMount() {
-    console.log(this.state);
     this.loadBooks();
   }
 
   loadBooks = () => {
     API.getBooks()
       .then(res => this.setState({ books: res.data }))
-      .then(console.log(this.state))
       .catch(err => console.log(err));
   };
 

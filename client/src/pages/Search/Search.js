@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
-// import SearchForm from "../../components/SearchForm";
 import API from "../../utils/API";
 import "./style.css";
 
@@ -23,7 +22,7 @@ class Search extends Component {
       .catch(err => console.log(err));
   };
 
-  saveBook = (i) => {
+  saveBook = i => {
     const bookData = {
       title: this.state.books[i].volumeInfo.title,
       authors: this.state.books[i].volumeInfo.authors,
@@ -31,8 +30,6 @@ class Search extends Component {
       image: this.state.books[i].volumeInfo.imageLinks.thumbnail,
       link: this.state.books[i].volumeInfo.previewLink
     }
-
-    console.log(bookData);
 
     API.saveBook(bookData)
     .then(res => console.log(res))

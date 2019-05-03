@@ -18,13 +18,21 @@ class Saved extends Component {
       .catch(err => console.log(err));
   };
 
+  deleteBook = i => {
+    API.deleteBook(this.state.books[i]._id)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+
+      this.loadBooks();
+  }
+
   render() {
     return (
       <div>
         <Jumbotron />
         {/* Saved Articles */}
         <div className="container">
-          {this.state.books.map(book => (
+          {this.state.books.map((book, i) => (
             <div className="card m-3" key={book.title}>
               <div className="card-header">
                 <a
@@ -35,13 +43,15 @@ class Saved extends Component {
                 >
                   {book.title}
                 </a>
-                <a
-                  href="/save"
-                  className="btn btn-success save-btn"
-                  data-id="{{_id}}"
+                <button
+                  type="button"
+                  className="btn btn-danger save-btn"
+                  onClick={() => {
+                    this.deleteBook(i);
+                  }}
                 >
-                  Save Article
-                </a>
+                  Delete Book
+                </button>
               </div>
               <div className="card-body">
                 <p className="card-text">{book.description}</p>

@@ -75,16 +75,18 @@ class Search extends Component {
                 <button
                   type="button"
                   className="btn btn-success save-btn"
-                  onClick={() => {this.saveBook(i)}}
+                  onClick={() => {
+                    this.saveBook(i);
+                  }}
                 >
                   Save Book
                 </button>
               </div>
               <div className="card-body">
-                <p className="card-text">{book.volumeInfo.description}</p>
+              <h2>Written by:</h2>
                 <p className="card-text">
                   {book.volumeInfo.authors.map(author => (
-                    <span key={author}>
+                    <span key={author} className="itl">
                       {author}
                       <br />
                     </span>
@@ -94,6 +96,7 @@ class Search extends Component {
                   src={book.volumeInfo.imageLinks.thumbnail}
                   alt={book.volumeInfo.title}
                 />
+                <p className="card-text">{book.volumeInfo.description}</p>
               </div>
             </div>
           ))}

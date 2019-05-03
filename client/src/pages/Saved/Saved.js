@@ -20,10 +20,8 @@ class Saved extends Component {
 
   deleteBook = i => {
     API.deleteBook(this.state.books[i]._id)
-      .then(res => console.log(res))
+      .then(res => this.loadBooks())
       .catch(err => console.log(err));
-
-      this.loadBooks();
   }
 
   render() {
@@ -54,9 +52,17 @@ class Saved extends Component {
                 </button>
               </div>
               <div className="card-body">
-                <p className="card-text">{book.description}</p>
-                <p className="card-text">{book.authors}</p>
+                <h2>Written by:</h2>
+                <p className="card-text">
+                  {book.authors.map(author => (
+                    <span key={author} className="itl">
+                      {author}
+                      <br />
+                    </span>
+                  ))}
+                </p>
                 <img src={book.image} alt={book.title} />
+                <p className="card-text">{book.description}</p>
               </div>
             </div>
           ))}

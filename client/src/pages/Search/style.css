@@ -12,3 +12,17 @@
   display: inline-block;
   width: 70%;
 }
+
+img {
+  float: left;
+  padding-right: 15px;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.itl {
+  font-style: italic;
+}

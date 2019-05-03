@@ -27,7 +27,7 @@ class Saved extends Component {
   render() {
     return (
       <div>
-        <Jumbotron />
+        <Jumbotron name="Saved"/>
         {/* Saved Articles */}
         <div className="container">
           {this.state.books.map((book, i) => (

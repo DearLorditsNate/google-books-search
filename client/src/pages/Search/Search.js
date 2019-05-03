@@ -39,7 +39,7 @@ class Search extends Component {
   render() {
     return (
       <div>
-        <Jumbotron />
+        <Jumbotron name="Search"/>
         <form>
           <div className="form-group">
             <label htmlFor="search">Search for a book</label>

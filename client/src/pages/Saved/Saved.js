@@ -23,9 +23,9 @@ class Saved extends Component {
       <div>
         <Jumbotron />
         {/* Saved Articles */}
-        {this.state.books.map(book => (
-          <div className="container">
-            <div className="card m-3">
+        <div className="container">
+          {this.state.books.map(book => (
+            <div className="card m-3" key={book.title}>
               <div className="card-header">
                 <a
                   href={book.link}
@@ -46,11 +46,11 @@ class Saved extends Component {
               <div className="card-body">
                 <p className="card-text">{book.description}</p>
                 <p className="card-text">{book.authors}</p>
-                <img src={book.image} alt={book.volumeInfo.title} />
+                <img src={book.image} alt={book.title} />
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   }

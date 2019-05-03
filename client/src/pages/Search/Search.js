@@ -9,12 +9,6 @@ class Search extends Component {
     books: []
   };
 
-  //   searchBooks = () => {
-  //     API.searchBooks()
-  //       .then(res => this.setState({ books: res.data }))
-  //       .catch(err => console.log(err));
-  //   };
-
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -27,6 +21,22 @@ class Search extends Component {
     API.searchBooks(this.state.search)
       .then(res => this.setState({ books: res.data.items }))
       .catch(err => console.log(err));
+  };
+
+  saveBook = (i) => {
+    const bookData = {
+      title: this.state.books[i].volumeInfo.title,
+      authors: this.state.books[i].volumeInfo.authors,
+      description: this.state.books[i].volumeInfo.description,
+      image: this.state.books[i].volumeInfo.imageLinks.thumbnail,
+      link: this.state.books[i].volumeInfo.previewLink
+    }
+
+    console.log(bookData);
+
+    API.saveBook(bookData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
   };
 
   render() {
@@ -54,7 +64,7 @@ class Search extends Component {
           </button>
         </form>
         <div className="container">
-          {this.state.books.map(book => (
+          {this.state.books.map((book, i) => (
             <div className="card m-3" key={book.volumeInfo.title}>
               <div className="card-header">
                 <a
@@ -65,13 +75,13 @@ class Search extends Component {
                 >
                   {book.volumeInfo.title}
                 </a>
-                <a
-                  href="/save"
+                <button
+                  type="button"
                   className="btn btn-success save-btn"
-                  data-id="{{_id}}"
+                  onClick={() => {this.saveBook(i)}}
                 >
-                  Save Article
-                </a>
+                  Save Book
+                </button>
               </div>
               <div className="card-body">
                 <p className="card-text">{book.volumeInfo.description}</p>
@@ -83,7 +93,10 @@ class Search extends Component {
                     </span>
                   ))}
                 </p>
-                <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
+                <img
+                  src={book.volumeInfo.imageLinks.thumbnail}
+                  alt={book.volumeInfo.title}
+                />
               </div>
             </div>
           ))}

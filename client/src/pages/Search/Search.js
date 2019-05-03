@@ -24,8 +24,9 @@ class Search extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    API.searchBooks(this.state.name)
+    API.searchBooks(this.state.search)
       .then(res => this.setState({ books: res.data.items }))
+      .then(console.log(this.state.books))
       .catch(err => console.log(err));
     console.log(this.state);
   };
@@ -39,6 +40,7 @@ class Search extends Component {
             <label htmlFor="search">Search for a book</label>
             <input
               type="input"
+              name="search"
               className="form-control"
               id="search"
               placeholder='"Harry Potter"'
@@ -58,7 +60,7 @@ class Search extends Component {
             <div className="card m-3">
               <div className="card-header">
                 <a href={book.link} target="_blank" className="title">
-                  {book.title}
+                  {book.volumeInfo.title}
                 </a>
                 <a
                   href="/save"

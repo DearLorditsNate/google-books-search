@@ -27,7 +27,12 @@ class Saved extends Component {
           <div className="container">
             <div className="card m-3">
               <div className="card-header">
-                <a href={book.link} target="_blank" className="title">
+                <a
+                  href={book.link}
+                  target="_blank"
+                  className="title"
+                  rel="noopener noreferrer"
+                >
                   {book.title}
                 </a>
                 <a
@@ -41,7 +46,7 @@ class Saved extends Component {
               <div className="card-body">
                 <p className="card-text">{book.description}</p>
                 <p className="card-text">{book.authors}</p>
-                <img src={book.image}></img>
+                <img src={book.image} alt={book.volumeInfo.title} />
               </div>
             </div>
           </div>

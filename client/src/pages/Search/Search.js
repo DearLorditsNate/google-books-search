@@ -26,9 +26,7 @@ class Search extends Component {
     event.preventDefault();
     API.searchBooks(this.state.search)
       .then(res => this.setState({ books: res.data.items }))
-      .then(console.log(this.state.books))
       .catch(err => console.log(err));
-    console.log(this.state);
   };
 
   render() {
@@ -55,11 +53,16 @@ class Search extends Component {
             Submit
           </button>
         </form>
-        {this.state.books.map(book => (
-          <div className="container">
-            <div className="card m-3">
+        <div className="container">
+          {this.state.books.map(book => (
+            <div className="card m-3" key={book.volumeInfo.title}>
               <div className="card-header">
-                <a href={book.link} target="_blank" className="title">
+                <a
+                  href={book.volumeInfo.previewLink}
+                  target="_blank"
+                  className="title"
+                  rel="noopener noreferrer"
+                >
                   {book.volumeInfo.title}
                 </a>
                 <a
@@ -71,13 +74,20 @@ class Search extends Component {
                 </a>
               </div>
               <div className="card-body">
-                <p className="card-text">{book.description}</p>
-                <p className="card-text">{book.authors}</p>
-                <img src={book.image} />
+                <p className="card-text">{book.volumeInfo.description}</p>
+                <p className="card-text">
+                  {book.volumeInfo.authors.map(author => (
+                    <span key={author}>
+                      {author}
+                      <br />
+                    </span>
+                  ))}
+                </p>
+                <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   }

@@ -1,0 +1,12 @@
+footer {
+    background-color: rgb(51, 216, 19);
+}
+
+.footer-img {
+    height: 30px;
+    padding-left: 10px;
+}
+
+p {
+    font-weight: bold;
+}

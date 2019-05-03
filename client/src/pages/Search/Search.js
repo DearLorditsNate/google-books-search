@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
+import Navbar from "../../components/Navbar";
+// import Footer from "../../components/Footer";
 import API from "../../utils/API";
 import "./style.css";
 
@@ -39,27 +41,30 @@ class Search extends Component {
   render() {
     return (
       <div>
-        <Jumbotron name="Search"/>
-        <form>
-          <div className="form-group">
-            <label htmlFor="search">Search for a book</label>
-            <input
-              type="input"
-              name="search"
-              className="form-control"
-              id="search"
-              placeholder='"Harry Potter"'
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={this.handleFormSubmit}
-          >
-            Submit
-          </button>
-        </form>
+        <Navbar />
+        <Jumbotron name="Search" />
+        <div className="container">
+          <form>
+            <div className="form-group">
+              <label htmlFor="search">Search for a book</label>
+              <input
+                type="input"
+                name="search"
+                className="form-control"
+                id="search"
+                placeholder='"Harry Potter"'
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={this.handleFormSubmit}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
         <div className="container">
           {this.state.books.map((book, i) => (
             <div className="card m-3" key={book.volumeInfo.title}>
@@ -83,7 +88,7 @@ class Search extends Component {
                 </button>
               </div>
               <div className="card-body">
-              <h2>Written by:</h2>
+                <h2>Written by:</h2>
                 <p className="card-text">
                   {book.volumeInfo.authors.map(author => (
                     <span key={author} className="itl">
@@ -101,6 +106,7 @@ class Search extends Component {
             </div>
           ))}
         </div>
+        {/* <Footer /> */}
       </div>
     );
   }

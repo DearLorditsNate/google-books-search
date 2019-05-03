@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
+import Navbar from "../../components/Navbar";
+// import Footer from "../../components/Footer";
 import API from "../../utils/API";
 import "./style.css";
 
@@ -27,7 +29,8 @@ class Saved extends Component {
   render() {
     return (
       <div>
-        <Jumbotron name="Saved"/>
+        <Navbar />
+        <Jumbotron name="Saved" />
         {/* Saved Articles */}
         <div className="container">
           {this.state.books.map((book, i) => (
@@ -67,6 +70,7 @@ class Saved extends Component {
             </div>
           ))}
         </div>
+        {/* <Footer /> */}
       </div>
     );
   }

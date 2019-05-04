@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
 import Navbar from "../../components/Navbar";
-// import Footer from "../../components/Footer";
 import API from "../../utils/API";
 import "./style.css";
 
@@ -70,7 +69,6 @@ class Saved extends Component {
             </div>
           ))}
         </div>
-        {/* <Footer /> */}
       </div>
     );
   }

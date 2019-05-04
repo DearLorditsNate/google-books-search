@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
 import Navbar from "../../components/Navbar";
-// import Footer from "../../components/Footer";
 import API from "../../utils/API";
 import "./style.css";
 
@@ -20,7 +19,7 @@ class Search extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     API.searchBooks(this.state.search)
-      .then(res => this.setState({ books: res.data.items }))
+      .then(res => this.setState({ books: res.data.items, search: "" }))
       .catch(err => console.log(err));
   };
 
@@ -31,11 +30,11 @@ class Search extends Component {
       description: this.state.books[i].volumeInfo.description,
       image: this.state.books[i].volumeInfo.imageLinks.thumbnail,
       link: this.state.books[i].volumeInfo.previewLink
-    }
+    };
 
     API.saveBook(bookData)
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -53,6 +52,7 @@ class Search extends Component {
                 className="form-control"
                 id="search"
                 placeholder='"Harry Potter"'
+                value={this.state.search}
                 onChange={this.handleInputChange}
               />
             </div>
@@ -106,7 +106,6 @@ class Search extends Component {
             </div>
           ))}
         </div>
-        {/* <Footer /> */}
       </div>
     );
   }
